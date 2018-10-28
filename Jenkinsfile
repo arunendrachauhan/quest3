@@ -1,8 +1,6 @@
 node{
     stage('SCM Checkout'){
-	sh 'usermod -aG docker jenkins'
-	sh 'service jenkins restart'    
-        git credentialsId: 'mygitcred', url: 'https://github.com/arunendrachauhan/quest3'
+	git credentialsId: 'mygitcred', url: 'https://github.com/arunendrachauhan/quest3'
     }
     stage('Mvn package'){
         def mvnHome = tool name: 'maven-3', type: 'maven'
