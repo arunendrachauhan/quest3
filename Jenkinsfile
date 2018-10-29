@@ -22,7 +22,7 @@ node{
 	//def dockerRun = 
 	//sh 'docker run -d -p 8085:8080 --name myapp arunendradocker/demoimg:0.1'
 	def which_docker = sh 'which docker'    
-	def dockerRun = sh "docker run --rm -p 8085:8080 -v jenkins-data:/var/jenkins_home -v ${which_docker}:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home arunendradocker/demoimg:0.1"    
+	def dockerRun = sh "docker run --rm -p 8085:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home arunendradocker/demoimg:0.1"    
 	sshagent(['credapp-server']) {
 	
 	sh "ssh -o StrictHostKeyChecking=no ec2-user@13.233.98.24 ${dockerRun}"
