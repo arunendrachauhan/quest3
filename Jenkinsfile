@@ -11,6 +11,9 @@ node{
         sh 'docker build -t demoimg:0.1 .'
     }
     stage('Run container on App server'){
-	sh 'docker run -d --name myapp demoimg:0.1'
+	def dockerRun = 'docker run -d -p 8080:8080 --name myapp demoimg:0.1'
+	sshagent(['credapp-server']) {
+	sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-13-126-229-86.ap-south-1.compute.amazonaws.com ${dockerRun}"
+	}
     }	
 }
