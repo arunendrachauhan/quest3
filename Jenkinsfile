@@ -25,7 +25,7 @@ node{
 	def dockerRun = sh "docker run --rm -p 8085:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock arunendradocker/demoimg:0.1"    
 	sshagent(['credapp-server']) {
 	
-	sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.15.249 ${dockerRun}"
+	sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.0.84 ${dockerRun}"
 	}
 	
     }
