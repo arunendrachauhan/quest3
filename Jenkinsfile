@@ -10,4 +10,10 @@ node{
     stage('Build Docker Image'){
         sh 'docker build -t demoimg:0.1 .'
     }
+    stage('Run container on App server'){
+	def dockerRun = 'docker run -p 8080:8080 -d --name my-appserver demoimg:0.1'
+	sshagent(['app-server']) {
+	sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.22.38 ${dockerRun}"
+      }
+    }	
 }
