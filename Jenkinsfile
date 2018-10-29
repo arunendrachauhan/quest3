@@ -19,7 +19,7 @@ node{
     stage('Run container on App server'){
 	//def dockerHome = tool name: 'docker-18', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
 	//def dockerCMD = "${dockerHome}/bin/docker"    
-	def dockerRun = 'docker run -d -p 8080:8080 --name myapp arunendradocker/demoimg:0.1'
+	def dockerRun = 'docker run -d --name myapp arunendradocker/demoimg:0.1'
 	sshagent(['credapp-server']) {
 	sh "ssh -o StrictHostKeyChecking=no ec2-user@13.233.98.24 ${dockerRun}"
 	}
