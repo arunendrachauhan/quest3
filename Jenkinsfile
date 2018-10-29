@@ -19,7 +19,7 @@ node{
     stage('Run container on App server'){
 	def dockerRun = 'docker run -d -p 8080:8080 --name myapp arunendradocker/demoimg:0.1'
 	sshagent(['credapp-server']) {
-	sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.22.38 ${dockerRun}"
+	sh "ssh -o StrictHostKeyChecking=no ec2-user@13.233.98.24 ${dockerRun}"
 	}
     }
 
