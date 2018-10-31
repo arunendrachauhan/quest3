@@ -37,7 +37,7 @@ node{
 	    sh "docker login -u arunendradocker -p ${dockerhubPwd}"
 	    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.164 docker pull arunendradocker/demoimg:${ENV}" 
 	    //def dockerRun = sh "docker run -p 8085:8080 --name ${ENV} arunendradocker/demoimg:${ENV}"
-	    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.164 docker run -p 8085:8080 --name ${ENV} arunendradocker/demoimg:${ENV}"
+	    sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.20.164 docker run -p 8088:8080 --name ${ENV} arunendradocker/demoimg:${ENV}"
 	    sh 'echo container deployed successfully'
 	    }
         }	
