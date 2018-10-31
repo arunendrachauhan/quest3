@@ -5,7 +5,7 @@ node{
     stage('Mvn build'){
         def mvnHome = tool name: 'maven-3', type: 'maven'
         def mvnCMD = "${mvnHome}/bin/mvn"
-        sh "${mvnCMD} clean package -Dmaven.test.skip"
+        sh "${mvnCMD} clean package"
         sh 'mv target/myweb*.war target/myweb.war'
     }
     stage('Build Docker Image'){
